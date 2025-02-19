@@ -1,0 +1,4 @@
+port : 50052
+hostname : "localhost"
+dsn : "storage/main.db"
+amqp_url : "amqp://guest:guest@localhost:5672/"

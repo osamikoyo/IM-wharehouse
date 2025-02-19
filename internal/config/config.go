@@ -10,6 +10,7 @@ type Config struct {
 	Port uint `yaml:"port"`
 	Hostname string `yaml:"hostname"`
 	DSN string `yaml:"dsn"`
+	AmqpUrl string `yaml:"amqp_url"`
 }
 
 func Load(cfgPath string) (*Config, error) {
