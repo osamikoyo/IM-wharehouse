@@ -10,6 +10,7 @@ type Config struct {
 	Port uint `yaml:"port"`
 	Hostname string `yaml:"hostname"`
 	DSN string `yaml:"dsn"`
+	RpcQueueName string `yaml:"rpc_queue_name"`
 	AmqpUrl string `yaml:"amqp_url"`
 }
 

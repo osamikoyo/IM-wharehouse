@@ -1,10 +1,9 @@
 package client
 
 import (
-    "github.com/bytedance/sonic"
-    "github.com/osamikoyo/IM-wharehouse/internal/data/models"
-    "github.com/osamikoyo/IM-wharehouse/pkg/config"
-    "github.com/streadway/amqp"
+	"github.com/bytedance/sonic"
+	"github.com/osamikoyo/IM-wharehouse/pkg/config"
+	"github.com/streadway/amqp"
 	"gopkg.in/gomail.v2"
 )
 
