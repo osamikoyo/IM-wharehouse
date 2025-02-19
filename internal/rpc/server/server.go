@@ -84,5 +84,5 @@ func (r *RpcServer) Run() error {
 			r.loger.Error().Err(err)
 		}
 	}
-	return nil
+	return nil  
 }
