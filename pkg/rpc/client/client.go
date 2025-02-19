@@ -1,10 +1,11 @@
 package client
 
 import (
-	"github.com/bytedance/sonic"
-	"github.com/osamikoyo/IM-wharehouse/internal/config"
+    "github.com/bytedance/sonic"
     "github.com/osamikoyo/IM-wharehouse/internal/data/models"
+    "github.com/osamikoyo/IM-wharehouse/pkg/config"
     "github.com/streadway/amqp"
+	"gopkg.in/gomail.v2"
 )
 
 
@@ -41,7 +42,7 @@ func Init(cfg *config.Config) (*Sender, error) {
 	}, err
 }
 
-func (s *Sender) Send(message models.Msg) error {
+func (s *Sender) Send(message *gomail.Message) error {
 	body, err := sonic.Marshal(message)
 	if err != nil{
 		return err

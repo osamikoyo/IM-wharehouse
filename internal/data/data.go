@@ -1,15 +1,16 @@
 package data
 
 import (
-	"github.com/osamikoyo/IM-wharehouse/internal/config"
 	"github.com/osamikoyo/IM-wharehouse/internal/data/models"
+	"github.com/osamikoyo/IM-wharehouse/internal/updater"
+	"github.com/osamikoyo/IM-wharehouse/pkg/config"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	"time"
 )
 
 type Storage struct {
 	db *gorm.DB
+	updater *updater.Updater
 }
 
 func New(cfg *config.Config) (*Storage, error){
@@ -40,6 +41,8 @@ func (s *Storage) RezervProduct(name string) error {
 	if result.Error != nil {
 		return result.Error
 	}
+
+	go s.updater.Do(product.Count, product.FullCount)
 
 	return nil
 }
