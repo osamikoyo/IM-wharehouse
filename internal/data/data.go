@@ -36,7 +36,23 @@ func (s *Storage) RezervProduct(name string) error {
 		return result.Error
 	}
 
-	result = s.db.Model(&product).Update("Count", name)
+	result = s.db.Model(&product).Update("Count", product.Count-1)
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
+}
+
+func (s *Storage) AddProductCount(count uint, name string) error {
+	var product models.Product
+
+	result := s.db.Where(&models.Product{Name: name}).Find(&product)
+	if result.Error != nil{
+		return result.Error
+	}
+
+	result = s.db.Model(&product).Update("Count", product.Count+count)
 	if result.Error != nil {
 		return result.Error
 	}
